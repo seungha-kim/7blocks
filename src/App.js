@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
-import { newAuth, deleteAuth } from './auth'
 import { ApolloProvider, ApolloClient, createNetworkInterface } from 'react-apollo'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import injectTapEventPlugin from 'react-tap-event-plugin'
 
-import UserMessageContainer from './containers/UserMessageContainer'
 import OnlyAuthenticatedContainer from './containers/OnlyAuthenticatedContainer'
 import LoginScreenContainer from './containers/LoginScreenContainer'
-import LogoutButtonContainer from './containers/LogoutButtonContainer'
+import MainContainer from './containers/MainContainer'
+import './style.css'
+
+injectTapEventPlugin();
 
 const apolloClient = new ApolloClient({
   networkInterface: createNetworkInterface({
@@ -20,19 +23,20 @@ const apolloClient = new ApolloClient({
 class App extends Component {
   render() {
     return (
-      <ApolloProvider client={apolloClient}>
-        <Router>
-          <Switch>
-            <Route path='/login' component={LoginScreenContainer} />
-            <Route path='/' render={() => (
-              <OnlyAuthenticatedContainer>
-                <UserMessageContainer />
-                <LogoutButtonContainer />
-              </OnlyAuthenticatedContainer>
-            )} />
-          </Switch>
-        </Router>
-      </ApolloProvider>
+      <MuiThemeProvider>
+        <ApolloProvider client={apolloClient}>
+          <Router>
+            <Switch>
+              <Route path='/login' component={LoginScreenContainer} />
+              <Route path='/' render={() => (
+                <OnlyAuthenticatedContainer>
+                  <MainContainer />
+                </OnlyAuthenticatedContainer>
+              )} />
+            </Switch>
+          </Router>
+        </ApolloProvider>
+      </MuiThemeProvider>
     );
   }
 
