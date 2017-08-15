@@ -13,29 +13,9 @@ export function getCurrentUser() {
   return currentUser
 }
 
-export function syncAuth() {
-  return axios.get('user')
-    .then(res => {
-      const resJson = res.data
-      if (resJson.ok) {
-        const {
-          displayName,
-          email,
-          createdAt
-        } = resJson.data
-        return {
-          displayName,
-          email,
-          createdAt
-        }
-      } else {
-        return null
-      }
-    })
-}
 
-export function newAuth() {
-  const loginWindow = window.open(`${API_URL}/login`)
+export async function newAuth() {
+  const loginWindow = window.open(`${API_URL}/auth`)
   return new Promise((resolve, reject) => {
     function listener(e) {
       console.log(e.origin)
@@ -51,6 +31,6 @@ export function newAuth() {
   })
 }
 
-export function deleteAuth() {
-  return axios.delete('/login')
+export async function deleteAuth() {
+  return axios.delete('/auth')
 }
