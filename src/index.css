@@ -3,3 +3,43 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+body, html, #root {
+  height: 100%;
+}
+
+.flex-vertical {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.main-wrap {
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.clock-font {
+  font-size: 8rem;
+}
+
+.action-buttons-wrap {
+  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.action-buttons-wrap > * {
+  margin-left: 15px;
+}
+

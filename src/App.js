@@ -7,13 +7,12 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 import OnlyAuthenticatedContainer from './containers/OnlyAuthenticatedContainer'
 import LoginScreenContainer from './containers/LoginScreenContainer'
 import MainContainer from './containers/MainContainer'
-import './style.css'
 
 injectTapEventPlugin();
 
 const apolloClient = new ApolloClient({
   networkInterface: createNetworkInterface({
-    uri: 'http://localhost:3001/graphql',
+    uri: `${process.env.REACT_APP_API_URL}/graphql`,
     opts: {
       credentials: 'include',
     }

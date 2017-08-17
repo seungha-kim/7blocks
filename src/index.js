@@ -8,4 +8,4 @@ import log from 'loglevel'
 log.setLevel('debug') // FIXME
 
 ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+// registerServiceWorker();
