@@ -27,7 +27,7 @@ class MainContainer extends React.Component {
   }
 
   onComplete = blockLength => {
-    log.info(`complete: ${this.state.selectedCardID} during ${blockLength}`)
+    log.info(`complete: ${this.state.selectedCardID} at ${new Date()}`)
     this.props.newBlock({
       variables: {
         cardId: this.state.selectedCardID,
